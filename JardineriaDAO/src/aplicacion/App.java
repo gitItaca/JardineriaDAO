@@ -50,11 +50,24 @@ public class App {
 		day3.add(Calendar.DAY_OF_MONTH, 2);
 		
 		try {
+			//System.out.println(today.get(Calendar.DAY_OF_MONTH));
 			pDao.save(OperacionesPedido.crearPedido(10, today, day1, day2, 10));
+			pDao.save(OperacionesPedido.crearPedido(11, day1, day1, day2, 10));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+		try {
+			pDao.save(OperacionesPedido.crearPedido(12, today, day2, day3, 2));
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			pDao.save(OperacionesPedido.crearPedido(12, today, today, day3, 10));
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		for (Pedido pedido : pDao.getAll()) {
 			System.out.println(pedido);
 		}
