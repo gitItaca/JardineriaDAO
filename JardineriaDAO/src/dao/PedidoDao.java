@@ -2,14 +2,13 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import model.Pedido;
 
 public class PedidoDao implements Dao<Pedido>{
 	
-	private List<Pedido> pedidos = new ArrayList<>();
+	private static List<Pedido> pedidos = new ArrayList<>();
 	
 	public PedidoDao() {		
 	}
@@ -30,16 +29,16 @@ public class PedidoDao implements Dao<Pedido>{
 	}
 
 	@Override
-	public void update(Pedido pedido, String[] params) {
-		pedidos.get(pedido.getCodigo_pedido()).setCodigo_pedido(pedido.getCodigo_pedido());
+	public void update(Pedido pedido) {
+	
 		pedidos.get(pedido.getCodigo_pedido()).setFecha_pedido(pedido.getFecha_pedido());
 		pedidos.get(pedido.getCodigo_pedido()).setFecha_esperada(pedido.getFecha_esperada());
 		pedidos.get(pedido.getCodigo_pedido()).setFecha_entrega(pedido.getFecha_entrega());
-		pedido.setEstado(Objects.requireNonNull(params [0]));
-		pedido.setComentarios(Objects.requireNonNull(params [1]));
+		pedidos.get(pedido.getCodigo_pedido()).setEstado(pedido.getEstado());
+		pedidos.get(pedido.getCodigo_pedido()).setComentarios(pedido.getComentarios());
 		pedidos.get(pedido.getCodigo_pedido()).setCodigo_cliente(pedido.getCodigo_cliente());
 		
-		pedidos.add(pedido);
+		//pedidos.add(pedido);
 	}
 
 	@Override

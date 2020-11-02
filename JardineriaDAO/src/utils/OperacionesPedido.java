@@ -11,19 +11,19 @@ import model.Pedido;
 
 public class OperacionesPedido {
 
-	public static void crearPedido(Pedido pedido) throws Exception{
+	public static Pedido crearPedido(int id_pedido, Calendar f_pedido, Calendar f_esperada, Calendar f_entrega, int id_cliente) throws Exception{
 		
-		Pedido pedidoNuevo = pedido;
+		
 		Calendar fechaActual = new GregorianCalendar();
-		Calendar fechaMinimaEsperada = pedidoNuevo.getFecha_pedido();
+		Calendar fechaMinimaEsperada = f_pedido;
 		fechaMinimaEsperada.add(Calendar.DAY_OF_MONTH, 3);		
 		
 		//Comprobar la fecha actual del pedido.
-		if(pedidoNuevo.getFecha_pedido() != fechaActual) {
+		if(f_pedido != fechaActual) {
 			throw new Exception("La fecha del pedido tiene que ser el día de hoy.");
 		}
 		//Comprobar la fecha esperada del pedido.
-		if(pedidoNuevo.getFecha_esperada().before(fechaMinimaEsperada)) {
+		if(f_esperada.before(fechaMinimaEsperada)) {
 			throw new Exception("La fecha de entrega esperada no puede ser anterior a tres días después de la fecha de creación.");
 		}		
 		//Comprobar el codigo del cliente.
@@ -32,7 +32,7 @@ public class OperacionesPedido {
 		boolean existeCliente = false;
 		List <Cliente> clientesSaved = cDao.getAll();
 		for (Cliente clienteSaved : clientesSaved) {
-			if(pedidoNuevo.getCodigo_cliente() == clienteSaved.getCodigo_cliente()) {
+			if(id_cliente == clienteSaved.getCodigo_cliente()) {
 				existeCliente = true;
 			}
 		}
@@ -40,8 +40,8 @@ public class OperacionesPedido {
 			throw new Exception("El cliente del pedido no existe en la base de datos.");
 		}
 		//Guardar el pedido
-		pDao.save(pedido);
-		
+		//pDao.save(pedido);
+		return new Pedido(id_pedido, f_pedido, f_esperada, f_entrega, id_cliente);
 	}
 	
 

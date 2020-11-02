@@ -2,14 +2,13 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import model.Cliente;
 
 public class ClienteDao implements Dao<Cliente>{
 	
-	private List<Cliente> clientes = new ArrayList<>();
+	private static List<Cliente> clientes = new ArrayList<>();
 
 	public ClienteDao() {		
 	}
@@ -30,23 +29,22 @@ public class ClienteDao implements Dao<Cliente>{
 	}
 
 	@Override
-	public void update(Cliente cliente, String[] params) {
-		clientes.get(cliente.getCodigo_cliente()).setCodigo_cliente(cliente.getCodigo_cliente());
-		cliente.setNombre_cliente(Objects.requireNonNull(params [0], "Nombre cliente obligatorio"));
-		cliente.setNombre_contacto(Objects.requireNonNull(params [1], "Nombre contacto obligatorio"));
-		cliente.setApellido_contacto(Objects.requireNonNull(params [2], "Apellido contacto obligatorio"));
-		cliente.setTelefono(Objects.requireNonNull(params [3]));
-		cliente.setFax(Objects.requireNonNull(params [4]));
-		cliente.setLinea_direccion1(Objects.requireNonNull(params [5]));
-		cliente.setLinea_direccion2(Objects.requireNonNull(params [6]));
-		cliente.setCiudad(Objects.requireNonNull(params [7]));
-		cliente.setRegion(Objects.requireNonNull(params [8]));
-		cliente.setPais(Objects.requireNonNull(params [9]));
-		cliente.setCodigo_postal(Objects.requireNonNull(params [10]));
+	public void update(Cliente cliente) {
+		clientes.get(cliente.getCodigo_cliente()).setNombre_cliente(cliente.getNombre_cliente());
+		clientes.get(cliente.getCodigo_cliente()).setNombre_contacto(cliente.getNombre_contacto());
+		clientes.get(cliente.getCodigo_cliente()).setApellido_contacto(cliente.getApellido_contacto());
+		clientes.get(cliente.getCodigo_cliente()).setTelefono(cliente.getTelefono());
+		clientes.get(cliente.getCodigo_cliente()).setFax(cliente.getFax());
+		clientes.get(cliente.getCodigo_cliente()).setLinea_direccion1(cliente.getLinea_direccion1());
+		clientes.get(cliente.getCodigo_cliente()).setLinea_direccion2(cliente.getLinea_direccion2());
+		clientes.get(cliente.getCodigo_cliente()).setCiudad(cliente.getCiudad());
+		clientes.get(cliente.getCodigo_cliente()).setRegion(cliente.getRegion());
+		clientes.get(cliente.getCodigo_cliente()).setPais(cliente.getPais());
+		clientes.get(cliente.getCodigo_cliente()).setCodigo_postal(cliente.getCodigo_postal());
 		clientes.get(cliente.getCodigo_cliente()).setCodigo_empleado_rep_ventas(cliente.getCodigo_empleado_rep_ventas());
 		clientes.get(cliente.getCodigo_cliente()).setLimite_credito(cliente.getLimite_credito());
 		
-		clientes.add(cliente);
+		//clientes.add(cliente);
 	}
 
 	@Override

@@ -23,6 +23,15 @@ public class Pedido {
 		this.comentarios = comentarios;
 		this.codigo_cliente = codigo_cliente;
 	}
+	
+	public Pedido(int codigo_pedido, Calendar fecha_pedido, Calendar fecha_esperada, Calendar fecha_entrega, int codigo_cliente) {
+		super();
+		this.codigo_pedido = codigo_pedido;
+		this.fecha_pedido = fecha_pedido;
+		this.fecha_esperada = fecha_esperada;
+		this.fecha_entrega = fecha_entrega;
+		this.codigo_cliente = codigo_cliente;
+	}
 
 //GETTERS AND SETTERS
 	public int getCodigo_pedido() {
