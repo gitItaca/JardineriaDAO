@@ -24,6 +24,7 @@ public class OperacionesPedido {
 		}else throw new Exception("La fecha del pedido tiene que ser el día de hoy.");
 		//Comprobar la fecha esperada del pedido.
 		fechaMinimaEsperada.add(Calendar.DAY_OF_MONTH, 3);
+		//System.out.println(fechaActual.get(Calendar.DAY_OF_MONTH) + " today - " + f_esperada.get(Calendar.DAY_OF_MONTH) + " - " + fechaMinimaEsperada.get(Calendar.DAY_OF_MONTH));
 		if(f_esperada.before(fechaMinimaEsperada)) {
 			throw new Exception("La fecha de entrega esperada no puede ser anterior a tres días después de la fecha de creación.");
 		}		

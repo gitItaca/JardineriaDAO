@@ -63,7 +63,7 @@ public class App {
 			System.out.println(e.getMessage());
 		}
 		try {
-			pDao.save(OperacionesPedido.crearPedido(12, today, today, day3, 10));
+			pDao.save(OperacionesPedido.crearPedido(12, today, day3, day3, 10));
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
