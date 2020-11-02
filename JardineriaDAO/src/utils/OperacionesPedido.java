@@ -17,7 +17,6 @@ public class OperacionesPedido {
 		Calendar fechaMinimaEsperada = new GregorianCalendar();
 		fechaMinimaEsperada = f_pedido;
 				
-		System.out.println(f_pedido.get(Calendar.DAY_OF_MONTH) + " " + fechaActual.get(Calendar.DAY_OF_MONTH));
 		//Comprobar la fecha actual del pedido.
 		if((f_pedido.get(Calendar.DAY_OF_MONTH) == fechaActual.get(Calendar.DAY_OF_MONTH)) 
 				&& (f_pedido.get(Calendar.MONTH) == fechaActual.get(Calendar.MONTH))
